@@ -6,10 +6,13 @@ export const myMemo = (Component) => {
       return <Component {...this.props} />;
     }
     shouldComponentUpdate(nextProps) {
-      if (this.props === nextProps) {
-        return false;
-      }
-      return true;
+      const propKeys = Object.keys(this.props || {});
+
+      const hasPropChanged = propKeys.every(
+        (key) => this.props[key] === nextProps[key]
+      );
+
+      return !hasPropChanged;
     }
   };
 };
