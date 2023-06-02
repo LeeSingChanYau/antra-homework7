@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import { myMemo } from '../hoc/myMemo';
+import MyPureComponent from '../classes/MyPureComponent';
 
-class Car extends React.Component {
+class Car extends MyPureComponent {
   componentDidUpdate() {
     console.log(this.props.carData.make, 'updated');
   }
@@ -46,4 +47,4 @@ class Car extends React.Component {
 }
 
 // export default Car;
-export default myMemo(Car);
+export default Car;
